@@ -1,14 +1,24 @@
-import axios from "axios";
+import { useState } from "react";
 import { useQuery } from "react-query";
+import axios from "axios";
 
-const fetchSuperHeroes = () => axios("http://localhost:4000/superheroes1");
+const fetchSuperHeroes = () => axios("http://localhost:4000/superheroes");
 
 const RQSuperHeroes = () => {
+  const [pollingLapse, setPollingLapse] = useState(3000);
+
   const onSuccess = (data) => {
     console.log("Perform side effect after data fetching", data);
+    const superheroes = data.data;
+    if (superheroes.length > 3) {
+      setPollingLapse(false);
+    } else {
+      setPollingLapse(3000);
+    }
   };
   const onError = (error) => {
     console.log("Perform side effect after encountering error", error);
+    setPollingLapse(false);
   };
 
   const { isLoading, isFetching, data, isError, error, refetch } = useQuery(
@@ -17,11 +27,14 @@ const RQSuperHeroes = () => {
     {
       onSuccess,
       onError,
+      refetchInterval: pollingLapse,
+      refetchIntervalInBackground: true,
     }
   );
   console.log({ isLoading, isFetching });
 
-  if (isLoading || isFetching) {
+  // if (isLoading || isFetching) {
+  if (isLoading) {
     return <p>Loading...</p>;
   }
   if (isError) {
