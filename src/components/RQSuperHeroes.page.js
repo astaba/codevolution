@@ -5,20 +5,11 @@ import axios from "axios";
 const fetchSuperHeroes = () => axios("http://localhost:4000/superheroes");
 
 const RQSuperHeroes = () => {
-  const [pollingLapse, setPollingLapse] = useState(3000);
-
   const onSuccess = (data) => {
     console.log("Perform side effect after data fetching", data);
-    const superheroes = data.data;
-    if (superheroes.length > 3) {
-      setPollingLapse(false);
-    } else {
-      setPollingLapse(3000);
-    }
   };
   const onError = (error) => {
     console.log("Perform side effect after encountering error", error);
-    setPollingLapse(false);
   };
 
   const { isLoading, isFetching, data, isError, error, refetch } = useQuery(
@@ -27,8 +18,10 @@ const RQSuperHeroes = () => {
     {
       onSuccess,
       onError,
-      refetchInterval: pollingLapse,
-      refetchIntervalInBackground: true,
+      select: (data) => {
+        const heroNames = data.data.map((hero) => hero.name);
+        return heroNames;
+      },
     }
   );
   console.log({ isLoading, isFetching });
@@ -45,8 +38,8 @@ const RQSuperHeroes = () => {
     <>
       <h2>RQSuperHeroes</h2>
       <button onClick={refetch}>Fetch Heroes</button>
-      {data?.data.map((hero) => (
-        <div key={hero.name}>{hero.name}</div>
+      {data.map((heroName) => (
+        <div key={heroName}>{heroName}</div>
       ))}
     </>
   );
