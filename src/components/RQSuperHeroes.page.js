@@ -8,7 +8,7 @@ const RQSuperHeroes = () => {
     "super-heroes",
     fetchSuperHeroes,
     {
-      cacheTime: 5000,
+      staleTime: 30000,
     }
   );
   console.log({ isLoading, isFetching });
