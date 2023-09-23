@@ -8,7 +8,7 @@ const SuperHeroes = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/superheroes1")
+      .get("http://localhost:4000/superheroes")
       .then((response) => {
         setData(response.data);
         setIsLoading(false);

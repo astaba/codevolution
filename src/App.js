@@ -1,5 +1,6 @@
 import { Link, Route, Routes } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 import "./App.css";
 import SuperHeroes from "./components/SuperHeroes.page";
@@ -31,6 +32,7 @@ function App() {
           <Route path="/" element={<Home />} />
         </Routes>
       </div>
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </QueryClientProvider>
   );
 }
