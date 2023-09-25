@@ -1,22 +1,18 @@
 import useSuperHeroes from "../hooks/useSuperHeroes";
 
 const RQSuperHeroes = () => {
-   const {
-    isLoading,
-    isFetching,
-    data,
-    isError,
-    error,
-    refetch } = useSuperHeroes(onSuccess, onError);
+  const { isLoading, data, isError, error } = useSuperHeroes({
+    onSuccess,
+    onError,
+  });
 
-  function onSuccess (data) {
+  function onSuccess(data) {
     console.log("Perform side effect after data fetching", data);
-  };
-  function onError (error) {
+  }
+  function onError(error) {
     console.log("Perform side effect after encountering error", error);
-  };
+  }
 
- // if (isLoading || isFetching) {
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -27,7 +23,6 @@ const RQSuperHeroes = () => {
   return (
     <>
       <h2>RQSuperHeroes</h2>
-      <button onClick={refetch}>Fetch Heroes</button>
       {data.map((heroName) => (
         <div key={heroName}>{heroName}</div>
       ))}

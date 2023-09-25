@@ -3,8 +3,9 @@ import axios from "axios";
 
 const fetchSuperHeroes = () => axios("http://localhost:4000/superheroes");
 
-const useSuperHeroes = (onSuccess, onError) => {
+const useSuperHeroes = ({ enabled = true, onSuccess, onError }) => {
   return useQuery("super-heroes", fetchSuperHeroes, {
+    enabled,
     onSuccess,
     onError,
     select: (data) => {
