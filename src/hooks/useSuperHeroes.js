@@ -8,10 +8,10 @@ const useSuperHeroes = ({ enabled = true, onSuccess, onError }) => {
     enabled,
     onSuccess,
     onError,
-    select: (data) => {
-      const heroNames = data.data.map((hero) => hero.name);
-      return heroNames;
-    },
+    // select: (data) => {
+    //   const heroNames = data.data.map((hero) => hero.name);
+    //   return heroNames;
+    // },
   });
 };
 
