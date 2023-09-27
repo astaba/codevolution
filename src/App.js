@@ -10,6 +10,7 @@ import RQPracticeHook from "./components/RQPracticeHook";
 import RQSuperHeroe from "./components/RQSuperHeroe.page";
 import RQParallel from "./components/RQParallel.page";
 import RQDynamicParallel from "./components/RQDynamicParallel.page";
+import RQDependentQueries from "./components/RQDependentQueries.page";
 
 const queryClient = new QueryClient();
 
@@ -31,7 +32,8 @@ function App() {
             <li>
               {/* <Link to="/rq-programmatic">RQ Fetching onEvent</Link> */}
               {/* <Link to="/rq-parallel">RQ Parallel</Link> */}
-              <Link to="/rq-dynamic-parallel">RQ Dynamic Parallel</Link>
+              {/* <Link to="/rq-dynamic-parallel">RQ Dynamic Parallel</Link> */}
+              <Link to="/rq-dependent-queries">RQ Dependent Queries</Link>
             </li>
           </ul>
         </nav>
@@ -42,9 +44,13 @@ function App() {
           <Route path="/rq-super-heroes/:heroId" element={<RQSuperHeroe />} />
           {/* <Route path="/rq-programmatic" element={<RQPracticeHook />} /> */}
           {/* <Route path="/rq-parallel" element={<RQParallel />} /> */}
-          <Route
+          {/* <Route
             path="/rq-dynamic-parallel"
             element={<RQDynamicParallel heroesId={[1, 4]} />}
+          /> */}
+          <Route
+            path="/rq-dependent-queries"
+            element={<RQDependentQueries email="vishwas@example.com" />}
           />
         </Routes>
       </div>
