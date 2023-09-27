@@ -15,6 +15,7 @@ const RQPaginatedQueries = () => {
     data: colors,
     error,
     isFetching,
+    isPreviousData,
   } = useQuery({
     queryKey: ["colors", page],
     queryFn: () => {
@@ -23,6 +24,7 @@ const RQPaginatedQueries = () => {
       );
     },
     select: (data) => data.data,
+    keepPreviousData: true,
   });
 
   return (
@@ -54,11 +56,12 @@ const RQPaginatedQueries = () => {
         </button>{" "}
         <button
           onClick={() => setPage((old) => old + 1)}
-          disabled={page === 4}
+          disabled={isPreviousData || page === 4}
         >
           Next Page &gt;&gt;
         </button>
       </div>
+      {isFetching && <p>Loading...</p>}
     </>
   );
 };
