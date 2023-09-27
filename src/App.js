@@ -1,6 +1,6 @@
 import { Link, Route, Routes } from "react-router-dom";
-import { QueryClientProvider, QueryClient } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import "./App.css";
 import SuperHeroes from "./components/SuperHeroes.page";
@@ -54,7 +54,7 @@ function App() {
           />
         </Routes>
       </div>
-      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-left" />
     </QueryClientProvider>
   );
 }

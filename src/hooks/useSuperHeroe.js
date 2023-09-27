@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 // const fetchSuperHeroe = (heroId) => {
@@ -11,16 +11,19 @@ import axios from "axios";
 
 /*
 Now Take advantage of the fact that the queryKey is a member of
-the default object parameter of the queryFunction
+the default object parameter (QueryFunctionContex) of the queryFunction
 */
 
 const fetchSuperHeroe = ({ queryKey }) => {
-  const heroId = queryKey[1];
+  const [_key, heroId] = queryKey;
   return axios.get(`http://localhost:4000/superheroes/${heroId}`);
 };
 
 const useSuperHeroe = (heroId) => {
-  return useQuery(["super-heroe", heroId], fetchSuperHeroe);
+  return useQuery({
+    queryKey: ["super-heroe", heroId],
+    queryFn: fetchSuperHeroe,
+  });
 };
 
 export default useSuperHeroe;

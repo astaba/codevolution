@@ -1,4 +1,4 @@
-import { useQueries } from "react-query";
+import { useQueries } from "@tanstack/react-query";
 import axios from "axios";
 
 const fetchSuperHeroe = (heroId) => {
@@ -6,12 +6,12 @@ const fetchSuperHeroe = (heroId) => {
 };
 
 const RQDynamicParallel = ({ heroesId }) => {
-  const queryResults = useQueries(
-    heroesId.map((id) => ({
+  const queryResults = useQueries({
+    queries: heroesId.map((id) => ({
       queryKey: ["superheroes", id],
       queryFn: () => fetchSuperHeroe(id),
-    }))
-  );
+    })),
+  });
   console.log(queryResults);
 
   return <div>RQDynamicParallel</div>;

@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const fetchSuperHeroes = () => {
@@ -9,8 +9,8 @@ const fetchFriends = () => {
 };
 
 const RQParallel = () => {
-  const { data: heroesResData } = useQuery("super-heroes", fetchSuperHeroes);
-  const { data: friendsResData } = useQuery("friends", fetchFriends);
+  const { data: heroesResData } = useQuery(["super-heroes"], fetchSuperHeroes);
+  const { data: friendsResData } = useQuery(["friends"], fetchFriends);
   // console.log(heroesResData?.data, friendsResData?.data);
 
   return <div>RQParallel</div>;

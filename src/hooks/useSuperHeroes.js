@@ -1,10 +1,12 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const fetchSuperHeroes = () => axios("http://localhost:4000/superheroes");
 
 const useSuperHeroes = ({ enabled = true, onSuccess, onError }) => {
-  return useQuery("super-heroes", fetchSuperHeroes, {
+  return useQuery({
+    queryKey: ["super-heroes"],
+    queryFn: fetchSuperHeroes,
     enabled,
     onSuccess,
     onError,
