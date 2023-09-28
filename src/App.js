@@ -12,6 +12,7 @@ import RQParallel from "./components/RQParallel.page";
 import RQDynamicParallel from "./components/RQDynamicParallel.page";
 import RQDependentQueries from "./components/RQDependentQueries.page";
 import RQPaginatedQueries from "./components/RQPaginatedQueries.page";
+import RQInifiniteQueries from "./components/RQInifiniteQueries.page";
 
 const queryClient = new QueryClient();
 
@@ -35,7 +36,8 @@ function App() {
               {/* <Link to="/rq-parallel">RQ Parallel</Link> */}
               {/* <Link to="/rq-dynamic-parallel">RQ Dynamic Parallel</Link> */}
               {/* <Link to="/rq-dependent-queries">RQ Dependent Queries</Link> */}
-              <Link to="/rq-paginated-queries">RQ Paginated Queries</Link>
+              {/* <Link to="/rq-paginated-queries">RQ Paginated Queries</Link> */}
+              <Link to="/rq-infinite-queries">RQ Infinite Queries</Link>
             </li>
           </ul>
         </nav>
@@ -44,17 +46,21 @@ function App() {
           <Route path="/super-heroes" element={<SuperHeroes />} />
           <Route path="/rq-super-heroes" element={<RQSuperHeroes />} />
           <Route path="/rq-super-heroes/:heroId" element={<RQSuperHeroe />} />
-          {/* <Route path="/rq-programmatic" element={<RQPracticeHook />} /> */}
-          {/* <Route path="/rq-parallel" element={<RQParallel />} /> */}
-          {/* <Route
+          <Route path="/rq-programmatic" element={<RQPracticeHook />} />
+          <Route path="/rq-parallel" element={<RQParallel />} />
+          <Route
             path="/rq-dynamic-parallel"
             element={<RQDynamicParallel heroesId={[1, 4]} />}
-          /> */}
-          {/* <Route
+          />
+          <Route
             path="/rq-dependent-queries"
             element={<RQDependentQueries email="vishwas@example.com" />}
-          /> */}
-          <Route path="/rq-paginated-queries" element={<RQPaginatedQueries />} />
+          />
+          <Route
+            path="/rq-paginated-queries"
+            element={<RQPaginatedQueries />}
+          />
+          <Route path="/rq-infinite-queries" element={<RQInifiniteQueries />} />
         </Routes>
       </div>
       <ReactQueryDevtools initialIsOpen={false} position="bottom-left" />
