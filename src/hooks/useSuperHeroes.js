@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import { request } from "../utils/axios-utils";
 
-const fetchSuperHeroes = () => axios("http://localhost:4000/superheroes");
+const fetchSuperHeroes = () => {
+  return request({ url: "superheroes/" });
+};
 
 const useSuperHeroes = ({ enabled = true, onSuccess, onError }) => {
   return useQuery({

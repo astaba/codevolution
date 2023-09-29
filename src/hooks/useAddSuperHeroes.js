@@ -1,12 +1,16 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
+import { request } from "../utils/axios-utils";
 
 const useAddSuperHeroes = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: (newHero) => {
-      return axios.post("http://localhost:4000/superheroes", newHero);
+      return request({
+        url: "superheroes/",
+        method: "POST",
+        data: newHero,
+      });
     },
     onMutate: async (newHero) => {
       // Cancel any outgoing refetches
