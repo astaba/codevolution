@@ -60,20 +60,6 @@ const RQSuperHeroes = () => {
         />
         <button type="submit">Add Hero</button>
       </form>
-      {addStatus === "loading" ? (
-        <p>Adding heroes...</p>
-      ) : (
-        <>
-          {addStatus === "error" ? (
-            <p>An error occured: {addError.message}</p>
-          ) : null}
-          {addStatus === "success" ? (
-            <p onClick={() => addReset()}>
-              <b>{addData?.data.name}</b> superheroe added!
-            </p>
-          ) : null}
-        </>
-      )}
       <br />
       <div>
         <button onClick={refetch}>Fetch Heroes</button>
@@ -82,7 +68,23 @@ const RQSuperHeroes = () => {
         <div key={hero.id}>
           <Link to={`${hero.id}`}>{hero.name}</Link>
         </div>
-      ))}
+      ))}{" "}
+      {addStatus === "loading" ? (
+        <p>Adding heroes...</p>
+      ) : (
+        <>
+          {addStatus === "error" ? (
+            <p onClick={() => addReset()}>
+              An error occured: {addError.message}
+            </p>
+          ) : null}
+          {addStatus === "success" ? (
+            <p onClick={() => addReset()}>
+              <b>{addData?.data.name}</b> superheroe added!
+            </p>
+          ) : null}
+        </>
+      )}
     </>
   );
 };
