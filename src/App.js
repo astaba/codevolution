@@ -32,11 +32,21 @@ function App() {
               <Link to="/rq-super-heroes">RQ Super Heroes</Link>
             </li>
             <li>
-              {/* <Link to="/rq-programmatic">RQ Fetching onEvent</Link> */}
-              {/* <Link to="/rq-parallel">RQ Parallel</Link> */}
-              {/* <Link to="/rq-dynamic-parallel">RQ Dynamic Parallel</Link> */}
-              {/* <Link to="/rq-dependent-queries">RQ Dependent Queries</Link> */}
-              {/* <Link to="/rq-paginated-queries">RQ Paginated Queries</Link> */}
+              <Link to="/rq-programmatic">RQ Fetching onEvent</Link>
+            </li>
+            <li>
+              <Link to="/rq-parallel">RQ Parallel</Link>
+            </li>
+            <li>
+              <Link to="/rq-dynamic-parallel">RQ Dynamic Parallel</Link>
+            </li>
+            <li>
+              <Link to="/rq-dependent-queries">RQ Dependent Queries</Link>
+            </li>
+            <li>
+              <Link to="/rq-paginated-queries">RQ Paginated Queries</Link>
+            </li>
+            <li>
               <Link to="/rq-infinite-queries">RQ Infinite Queries</Link>
             </li>
           </ul>

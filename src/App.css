@@ -1,5 +1,6 @@
 nav ul {
   display: flex;
+  flex-wrap: wrap;
   background-color: blanchedalmond;
   margin-block-start: 0;
   padding: 16px;
@@ -9,4 +10,7 @@ nav ul {
 nav ul li {
   list-style-type: none;
   margin-right: 16px;
+  padding: 3px;
+  border-radius: 5px;
+  border: solid 2px;
 }
