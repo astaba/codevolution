@@ -8,8 +8,13 @@ const useAddSuperHeroes = () => {
     mutationFn: (payload) => {
       return axios.post("http://localhost:4000/superheroes", payload);
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["super-heroes"] });
+    onSuccess: (data) => {
+      queryClient.setQueryData(["super-heroes"], (superHeroesOldData) => {
+        return {
+          ...superHeroesOldData,
+          data: [...superHeroesOldData.data, data.data],
+        };
+      });
     },
   });
 };
