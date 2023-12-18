@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { request } from "../utils/axios-utils";
 
 const fetchSuperHeroes = () => {
-  return request({ url: "superheroes/" });
+  return request({ url: "/superheroes" });
 };
 
 const useSuperHeroes = ({ enabled = true, onSuccess, onError }) => {

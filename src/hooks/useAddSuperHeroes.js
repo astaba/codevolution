@@ -7,7 +7,7 @@ const useAddSuperHeroes = () => {
   return useMutation({
     mutationFn: (newHero) => {
       return request({
-        url: "superheroes/",
+        url: "/superheroes",
         method: "POST",
         data: newHero,
       });
